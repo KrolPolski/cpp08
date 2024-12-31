@@ -6,7 +6,7 @@
 /*   By: rboudwin <rboudwin@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/31 15:09:50 by rboudwin          #+#    #+#             */
-/*   Updated: 2024/12/31 15:31:05 by rboudwin         ###   ########.fr       */
+/*   Updated: 2024/12/31 18:37:17 by rboudwin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,23 +16,29 @@
 #include <iostream>
 int main(void)
 {
+	try
 	{
-		std::vector<int> vec;
-		vec.push_back(0);
-		vec.push_back(10);
-		vec.push_back(20);
+		std::vector<int> vec {0, 10, 20};
 		std::cout << "VECTOR TEST" << std::endl;
-		std::cout << "Pointer: " << (easyFind(vec, 20)) << " Value: " << *easyFind(vec, 20) << std::endl;
-		std::cout << "Expecting nullptr: " << easyFind(vec, 147) << std::endl << std::endl;
+		std::cout << "We found Value: " << *easyFind(vec, 20) << std::endl;
+		std::cout << "We found Value: " << *easyFind(vec, 30) << std::endl;
 	}
+	catch (const std::exception& e)
 	{
-		std::list<int> list;
-		list.push_back(1);
-		list.push_back(11);
-		list.push_back(21);
-		std::cout << "LIST TEST" << std::endl;
-		std::cout << "Pointer: " << (easyFind(list, 11)) << " Value: " << *easyFind(list, 11) << std::endl;
-		std::cout << "Expecting nullptr: " << easyFind(list, 147) << std::endl << std::endl;
+		std::cerr << e.what() << std::endl << std::endl;
 	}
 	
+	try
+	{
+		std::list<int> list {1, 11, 21, 31};
+		std::cout << "LIST TEST" << std::endl;
+		std::cout << "We found Value: " << *easyFind(list, 21) << std::endl;
+		std::cout << "We found Value: " << *easyFind(list, 300) << std::endl;
+
+		
+	}
+	catch (const std::exception& e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
 }
