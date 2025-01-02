@@ -1,25 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   easyfind.hpp                                       :+:      :+:    :+:   */
+/*   Span.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rboudwin <rboudwin@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/31 14:40:04 by rboudwin          #+#    #+#             */
-/*   Updated: 2025/01/02 16:02:35 by rboudwin         ###   ########.fr       */
+/*   Created: 2025/01/02 15:56:32 by rboudwin          #+#    #+#             */
+/*   Updated: 2025/01/02 16:34:27 by rboudwin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
-#include <algorithm>
-#include <string>
+#include <set>
 #include <stdexcept>
+#include <numeric>
 
-template <typename T>
-typename T::iterator easyFind(T& box, int num)
+class Span
 {
-	auto iter = std::find(box.begin(), box.end(), num);
-	if (iter == box.end())
-		throw std::runtime_error(std::to_string(num) + " not found in container");
-	return iter;
-}
+private:
+	std::multiset<int> _values;
+	const unsigned int _size;
+	int max;
+	int min;
+public:
+	Span() = delete;
+	Span(int count);
+	Span(const Span& other);
+	Span& operator=(const Span& other) = delete;
+	~Span();
+	void addNumber(int num);
+	int shortestSpan();
+	int longestSpan();
+};
