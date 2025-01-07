@@ -6,7 +6,7 @@
 /*   By: rboudwin <rboudwin@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 15:56:32 by rboudwin          #+#    #+#             */
-/*   Updated: 2025/01/07 13:08:12 by rboudwin         ###   ########.fr       */
+/*   Updated: 2025/01/07 15:38:45 by rboudwin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,24 @@ public:
 	unsigned int getMaxSize();
 	int operator[](unsigned int index);
 	std::multiset<int> getValues();
+	template<typename iterator>
+	void addNumber(iterator begin, iterator end);
 };
 std::ostream& operator<<(std::ostream& out, Span& span);
+
+template<typename iterator>
+void Span::addNumber(iterator begin, iterator end)
+{
+	iterator curr;
+	curr = begin;
+	while (curr != end)
+	{
+		if (_values.size() >= _size)
+			throw std::runtime_error("Span is already full");
+		else
+		{
+			_values.insert(*curr);
+			curr++;
+		}
+	}
+}

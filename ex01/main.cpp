@@ -6,7 +6,7 @@
 /*   By: rboudwin <rboudwin@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 15:56:35 by rboudwin          #+#    #+#             */
-/*   Updated: 2025/01/07 13:09:21 by rboudwin         ###   ########.fr       */
+/*   Updated: 2025/01/07 15:53:43 by rboudwin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int main(void)
 		{
 			std::cout << e.what() << std::endl;
 		}
-		std::cout << "Basic Tests " << std::endl;
+		std::cout << "\n\033[31mBasic Tests \033[0m\n" << std::endl;
 		std::cout << nums;
 		std::cout << "Shortest Span: " << nums.shortestSpan() << std::endl;
 		std::cout << "Longest Span: " << nums.longestSpan() << std::endl;
@@ -41,10 +41,24 @@ int main(void)
 		{
 			bigNums.addNumber(rand() % 100000);
 		}
-		//std::set<int> bigNumsUniq = bigNums.getValues();
-		std::cout << bigNums << std::endl;
-		std::cout << std::endl << "10K Numbers test" << std::endl;
+		//std::cout << bigNums << std::endl;
+		std::cout << std::endl << "\033[31m10K Numbers test\033[0m\n" << std::endl;
 		std::cout << "Shortest Span: " << bigNums.shortestSpan() << std::endl;
 		std::cout << "Longest Span: " << bigNums.longestSpan() << std::endl;
+	}
+	{
+		std::cout << std::endl << "\033[31mRange of iterators test\033[0m\n" << std::endl;
+		Span rangeTest(10);
+		std::vector<int> input {1, 3, 6, 9, 13, 26, 34, 35, 22, 11};
+		try{
+			rangeTest.addNumber(input.begin(), input.end());
+		}	
+		catch (const std::exception& e)
+		{
+			std::cout << e.what() << std::endl;
+		}
+		std::cout << rangeTest << std::endl;
+		std::cout << "Shortest Span: " << rangeTest.shortestSpan() << std::endl;
+		std::cout << "Longest Span: " << rangeTest.longestSpan() << std::endl;
 	}
 }
