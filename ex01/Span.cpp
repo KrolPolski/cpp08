@@ -6,7 +6,7 @@
 /*   By: rboudwin <rboudwin@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 15:56:25 by rboudwin          #+#    #+#             */
-/*   Updated: 2025/01/07 15:36:20 by rboudwin         ###   ########.fr       */
+/*   Updated: 2025/01/08 16:02:58 by rboudwin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ Span::Span(int count) : _size(count)
 
 Span::Span(const Span& other) : _size(other._size)
 {
+	_values = other._values;
 }
 
 Span::~Span()

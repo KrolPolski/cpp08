@@ -6,7 +6,7 @@
 /*   By: rboudwin <rboudwin@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 15:56:35 by rboudwin          #+#    #+#             */
-/*   Updated: 2025/01/07 15:53:43 by rboudwin         ###   ########.fr       */
+/*   Updated: 2025/01/08 16:04:06 by rboudwin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,9 @@ int main(void)
 		std::cout << nums;
 		std::cout << "Shortest Span: " << nums.shortestSpan() << std::endl;
 		std::cout << "Longest Span: " << nums.longestSpan() << std::endl;
-		}
+		Span copyNums(nums);
+		std::cout << "copy test " << copyNums << std::endl;		
+	}
 	{
 		srand(static_cast<unsigned int>(time(0)));
 		Span bigNums(10000);
